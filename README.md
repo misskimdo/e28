@@ -1,2 +1,3 @@
-# eX
-This is a template repository you’ll use for your course work.
+# e28 
+
+By: Kim Do
