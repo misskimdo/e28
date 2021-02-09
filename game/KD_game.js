@@ -3,18 +3,18 @@ document.getElementById('paper').onclick = play;
 document.getElementById('scissors').onclick = play;
 
 function play() {
-    var userPlay = this.id;
+    const userPlay = this.id;
     you.innerHTML = userPlay;
 
-    var matrixOptions = [
+    const matrixOptions = [
         "rock",
         "paper",
         "scissors"
     ];
 
-    var matrixPlay = matrixOptions[Math.floor(Math.random() * matrixOptions.length)];
+    const matrixPlay = matrixOptions[Math.floor(Math.random() * matrixOptions.length)];
 
-    var matrix = document.getElementById('matrix');
+    const matrix = document.getElementById('matrix');
     matrix.innerHTML = matrixPlay;
 
     if (userPlay === matrixPlay) {
