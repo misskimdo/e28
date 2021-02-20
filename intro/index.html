@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Vue.js Intro</title>
+    <meta charset='utf-8'>
+    <link href=data:, rel=icon>
+
+    <script src='https://unpkg.com/vue@next' defer></script>
+    <script src='script.js' defer></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vue.js Intro</h1>
+
+    <div id='app' v-cloak>
+        <div v-if='!addName'>
+            <label>What is your name? <input v-model='player' type='text'></label>
+            <button v-on:click='addName = true'>Start Game</button>
+
+        </div>
+        <div v-else>
+            <div v-if='!correct'>
+                <p>Hi, {{ player }}. I' m thinking of a number between 1-10. What do you think it is?</p>
+                <input type='text' v-model='guess'>
+                <button v-on:click='addGuess()'>Submit Guess</button>
+            </div>
+            <ul>
+                <li v-for='thisGuess in guesses'>{{ thisGuess }}</li>
+            </ul>
+            <p v-if='correct'>You got it!</p>
+            <button v-on:click='reset()'>Play Again</button>
+        </div>
+</body>
+
+</html>
