@@ -5,6 +5,6 @@
 
 ## Outside Resources
 
-n/a
+[vue js 3 random](https://www.minddevelopmentanddesign.com/blog/random-array-picker-with-vue-for-beginners/)
 
 ## Notes for Instructor

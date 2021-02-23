@@ -2,40 +2,56 @@
 <html lang='en'>
 
 <head>
-    <title>Project 1</title>
+    <title>Vue.js Intro</title>
     <meta charset='utf-8'>
     <link href=data:, rel=icon>
 
     <script src='https://unpkg.com/vue@next' defer></script>
-    <script src='script.js' defer></script>
+    <script src='KD_game_vue.js' defer></script>
+
     <style>
         [v-cloak] {
             display: none;
         }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 
+
 <body>
-    <h1>Project 1</h1>
+    <h1>Rock. Paper. Let's play a game.</h1>
+    <h3>Choose your fate.</h3>
+    <p>If it's a been a minute since you were a kid having fun:
+        <br> Rock crushes scissors, scissors cut paper, paper
+        covers rock.</p>
+    <p>It doesn't have to make sense. Thems are the rules. </p>
+
 
     <div id='app' v-cloak>
-        <div v-if='!addName'>
-            <label>What is your name? <input v-model='player' type='text'></label>
-            <button v-on:click='addName = true'>Start Game</button>
+        <h2>Your Score: {{ yourScore }}</h2>
+        <h2>Matrix Score: {{ matrixScore }}</h2>
+        <div class="buttons">
+
+            <button v-on:click='play()'>Rock</button>
+            <button v-on:click='play()'>Paper</button>
+            <button v-on:click='play()'>Scissors</button>
 
         </div>
-        <div v-else>
-            <div v-if='!correct'>
-                <p>Hi, {{ player }}. I' m thinking of a number between 1-10. What do you think it is?</p>
-                <input type='text' v-model='guess'>
-                <button v-on:click='addGuess()'>Submit Guess</button>
-            </div>
-            <ul>
-                <li v-for='thisGuess in guesses'>{{ thisGuess }}</li>
-            </ul>
-            <p v-if='correct'>You got it!</p>
-            <button v-on:click='reset()'>Play Again</button>
-        </div>
+        <h3>Your Play: {{ yourPlay }}</h3>
+        <h3>The Matrix: {{ matrixOption }}</h3>
+        <h1 id="results"> {{ results }}</h1>
+
 </body>
+
+
 
 </html>
