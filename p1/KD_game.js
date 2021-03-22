@@ -14,7 +14,6 @@ const Game = {
         }
     },
     methods: {
-
         play(option) {
             this.playerOption = option;
 
@@ -74,9 +73,6 @@ const Game = {
 const GameHistory = {
     name: 'GameHistory',
     props: ['winner', 'index'],
-    data() {
-        return {}
-    },
     template: '#game-history'
 }
 

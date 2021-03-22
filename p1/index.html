@@ -30,32 +30,32 @@
             <button id="img" v-on:click="play('rock')"><img src="images/rock.png" /></button>
             <button id="img" v-on:click="play('paper')"><img src="images/paper.png" /></button>
             <button id="img" v-on:click="play('scissors')"><img src="images/scissors.png" /></button>
-
         </div>
+
         <h3>Your Play: {{ playerOption }}</h3>
         <h3>The Matrix: {{ matrixOption }}</h3>
 
-        <div v-bind:class='{green : youWon, red : youLost, tie : tie }'>
+        <div v-bind:class='{ green : youWon, red : youLost, tie : tie }'>
             <h2>{{ feedback }}</h2>
         </div>
+
         <div v-if="feedback">
             <button v-on:click="resetGame()">Reset Game</button>
         </div>
+
         <h3>Game History</h3>
         <game-history v-for="(winner, index) in winners" v-bind:winner='winner' v-bind:index='index+1'>
         </game-history>
-
     </div>
+
     <script id='game-history' type='text/x-template'>
         <div>
                 <ul>
                     <li><p>Round {{ index }}: {{ winner }}</p></li>
                 </ul>
             </div>
-            </script>
+    </script>
 
 </body>
-
-
 
 </html>
