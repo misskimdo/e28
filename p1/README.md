@@ -1,7 +1,7 @@
 # Project 1
 
 - By: Kim Do
-- Production URL: (http://e28p1.kimdo.me/)
+- Production URL: http://e28p1.kimdo.me
 
 ## Outside Resources
 
