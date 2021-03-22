@@ -2,28 +2,14 @@
 <html lang='en'>
 
 <head>
-    <title>Vue.js Intro</title>
+    <title>Rock. Paper. Scissors.</title>
     <meta charset='utf-8'>
     <link href=data:, rel=icon>
 
     <script src='https://unpkg.com/vue@next' defer></script>
     <script src='KD_game_vue.js' defer></script>
-
-    <style>
-        [v-cloak] {
-            display: none;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .correct {
-            color: green;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display">
+    <link rel="stylesheet" href="KD_vue_game.css">
 </head>
 
 
@@ -37,18 +23,36 @@
 
 
     <div id='app' v-cloak>
-        <h2>Your Score: {{ yourScore }}</h2>
-        <h2>Matrix Score: {{ matrixScore }}</h2>
-        <div class="buttons">
+        <h3>Your Score: {{ userScore }}</h3>
+        <h3>Matrix Score: {{ matrixScore }}</h3>
 
-            <button v-on:click='play()'>Rock</button>
-            <button v-on:click='play()'>Paper</button>
-            <button v-on:click='play()'>Scissors</button>
+        <div class="buttons">
+            <button id="img" v-on:click="play('rock')"><img src="images/rock.png" /></button>
+            <button id="img" v-on:click="play('paper')"><img src="images/paper.png" /></button>
+            <button id="img" v-on:click="play('scissors')"><img src="images/scissors.png" /></button>
 
         </div>
-        <h3>Your Play: {{ yourPlay }}</h3>
+        <h3>Your Play: {{ playerOption }}</h3>
         <h3>The Matrix: {{ matrixOption }}</h3>
-        <h1 id="results"> {{ results }}</h1>
+
+        <div v-bind:class='{green : youWon, red : youLost, tie : tie }'>
+            <h2>{{ feedback }}</h2>
+        </div>
+        <div v-if="feedback">
+            <button v-on:click="resetGame()">Reset Game</button>
+        </div>
+        <h3>Game History</h3>
+        <game-history v-for="(winner, index) in winners" v-bind:winner='winner' v-bind:index='index+1'>
+        </game-history>
+
+    </div>
+    <script id='game-history' type='text/x-template'>
+        <div>
+                <ul>
+                    <li><p>Round {{ index }}: {{ winner }}</li>
+                </ul>
+            </div>
+            </script>
 
 </body>
 
