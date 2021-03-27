@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Word Scramble SFC Practice</title>
+    <meta charset='utf-8'>
+    <script src='js/app.js' defer></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Word Scramble SFC Practice</h1>
+    <div id='app' v-cloak>
+
+        <div v-if='!gameStarted'>
+            <label for='name'>To get started, tell us your name:</label>
+            <input type='text' id='name' v-model='playerName' v-on:keyup.enter='startGame'>
+            <button v-on:click='startGame'>Let’s play!</button>
+        </div>
+
+        <div v-else>
+            <p>Game on, {{ playerName }}!</p>
+
+            <p>Your mystery word is: <span class='mysteryWord'>{{ scrambledWord }}</span></p>
+
+            <p>Hint: <em>{{ hint }}</em></p>
+
+            <label for='guess'>Your guess: </label>
+            <input type='text' id='guess' v-model.trim='guess' v-on:keyup.enter='submitAnswer'>
+            <button v-on:click='submitAnswer'>Submit guess</button>
+        </div>
+
+
+
+
+        <div id='gamefeedback' v-if='feedback' class='feedback'
+            v-bind:class="{ incorrect : !correct, correct : correct }">
+            <div>
+                <game-feedback v-bind:correct="correct" v-bind:load-game='loadGame'></game-feedback>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
