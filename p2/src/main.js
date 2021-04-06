@@ -3,15 +3,13 @@ import {
 } from 'vue'
 import App from './App.vue'
 
-// Import just the methods we need from the VueRouter module
 import {
     createRouter,
     createWebHistory
 } from 'vue-router';
-
 import HomePage from '@/components/pages/HomePage.vue';
-import ProductsPage from '@/components/pages/ProductsPage.vue';
-import ProductPage from '@/components/pages/ProductPage.vue';
+import RecipesPage from '@/components/pages/RecipesPage.vue';
+import RecipePage from '@/components/pages/RecipePage.vue';
 import CategoriesPage from '@/components/pages/CategoriesPage.vue';
 
 const router = createRouter({
@@ -21,12 +19,13 @@ const router = createRouter({
             component: HomePage
         },
         {
-            path: '/products',
-            component: ProductsPage
+            path: '/recipes',
+            component: RecipesPage
         },
         {
-            path: '/product/:id',
-            component: ProductPage,
+            path: '/recipe/:id',
+            component: RecipePage,
+            props: true
         },
         {
             path: '/categories',
@@ -34,4 +33,5 @@ const router = createRouter({
         },
     ]
 })
+
 createApp(App).use(router).mount('#app')

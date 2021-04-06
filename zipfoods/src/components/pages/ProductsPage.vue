@@ -5,10 +5,11 @@
             <show-product
                 v-for="product in products"
                 v-bind:key="product.id"
-                v-bind:product="product"
-            ></show-product>
+                v-bind:product="product">
+                <router-link :to="{path: '/product/'+product.id }">View Product</router-link>
+            </show-product>
         </div>
-    </div>
+    </div>  
 </template>
 
 <script>
@@ -21,6 +22,12 @@ export default {
     data() {
         return {
             products: products,
+            /* Store links in an array to maintain order */
+            links: [products],
+            /* Map links to the appropriate component */
+            paths: {
+                product: '/products/:id',
+            },
         };
     },
 };

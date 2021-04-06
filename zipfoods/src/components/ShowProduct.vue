@@ -9,8 +9,8 @@
             "
         />
 
-        <div class="price">${{ product.price }}</div>
-        <p class="description">{{ product.description }}</p>
+        <!-- <div class="price">${{ product.price }}</div>
+        <p class="description">{{ product.description }}</p> -->
     </div>
 </template>
 
