@@ -1,5 +1,4 @@
 <template>
-<a class="show-recipe" href="/recipe/:id">
   <div>
         <div class="name">{{ recipe.name }}</div>
 
@@ -11,7 +10,6 @@
         <!-- <div class="ingredients">{{ recipe.ingredients }}</div>
         <div class="directions">{{ recipe.directions }}</div> -->
     </div>
-</a>
 </template>
 
 <script>
