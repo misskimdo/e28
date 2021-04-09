@@ -27,13 +27,6 @@
         "categories": {
             "type": "string",
             "validators": []
-        },
-        "recipe_id": {
-            "type": "integer",
-            "validators": [
-                "required",
-                "numeric"
-            ]
         }
     }
 }
