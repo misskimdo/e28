@@ -2,33 +2,35 @@
     <div id="products-page">
         <h2>Products</h2>
         <div id="products">
-            <show-product
+            <router-link
+                class="product-link"
                 v-for="product in products"
+                v-bind:to="'/product/' + product.id"
                 v-bind:key="product.id"
-                v-bind:product="product">
-                <router-link :to="{path: '/product/'+product.id }">View Product</router-link>
-            </show-product>
+            >
+                <show-product
+                    v-bind:product="product"
+                    v-bind:detailed="false"
+                ></show-product>
+            </router-link>
         </div>
-    </div>  
+    </div>
 </template>
 
 <script>
 import ShowProduct from "@/components/ShowProduct.vue";
-import { products } from "@/common/products.js";
 export default {
     components: {
         "show-product": ShowProduct,
     },
+    props: {
+        products: {
+            type: Array,
+            default: null,
+        },
+    },
     data() {
-        return {
-            products: products,
-            /* Store links in an array to maintain order */
-            links: [products],
-            /* Map links to the appropriate component */
-            paths: {
-                product: '/products/:id',
-            },
-        };
+        return {};
     },
 };
 </script>
@@ -39,5 +41,22 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+}
+a.product-link:link,
+a.product-link:visited,
+a.product-link:active,
+a.product-link:hover {
+    text-decoration: none;
+    color: var(--black);
+    cursor: pointer;
+    border: 1px solid var(--silver);
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
+    width: 30%;
+    min-width: 300px;
+}
+a.product-link:hover {
+    border: 2px solid lightblue;
 }
 </style>

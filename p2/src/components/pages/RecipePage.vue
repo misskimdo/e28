@@ -1,6 +1,7 @@
 <template>
-  <div class="recipe-page">
-        <div class="name">{{ name }}</div>
+
+  <div class="show-recipe">
+        <div class="name" >{{ name}}</div>
 
         <img
             class="thumb"
@@ -13,27 +14,28 @@
 </template>
 
 <script>
+import { recipes } from '@/common/recipes.js';
 export default {
+    data() {
+    return {
+    recipes: recipes,
+    };
+  },
     props: {
         recipe: {
             type: Object,
         },
-        name: {
-            type: String,
-        },
         id: {
             type: String,
         },
-        description: {
+        name: {
             type: String,
         },
         ingredients: {
-            type: String,
-        },
-        directions: {
-            type: String,
+            type: Text,
         },
     },
+    
 };
 </script>
 
@@ -56,8 +58,7 @@ export default {
 }
 
 .thumb {
-    width: 100%;
-    max-width: 300px;
+    width: 480px;
     padding-bottom: 20px;
     border-radius: var(--radius);
 }
@@ -66,13 +67,13 @@ export default {
     margin: auto;
     text-align: left;
     font-style: italic;
-    font-size: 10pt;
+    font-size: 13pt;
     line-height: 1.5;
 }
 
 .ingredients {
     font-family: var(--serif-font);
-    font-size: 12pt;
+    font-size: 13pt;
     padding: 10px;
 }
 </style>

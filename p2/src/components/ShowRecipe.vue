@@ -1,13 +1,14 @@
 <template>
-  <div>
+
+  <div class="show-recipe">
         <div class="name">{{ recipe.name }}</div>
 
         <img
             class="thumb"
             v-bind:src="require('@/assets/images/foods/' + recipe.id + '.jpg')"
         />
-        <p class="description">{{ recipe.description }}</p>
-        <!-- <div class="ingredients">{{ recipe.ingredients }}</div>
+        <!-- <p class="description">{{ recipe.description }}</p>
+        <div class="ingredients">{{ recipe.ingredients }}</div>
         <div class="directions">{{ recipe.directions }}</div> -->
     </div>
 </template>
@@ -18,7 +19,11 @@ export default {
         recipe: {
             type: Object,
         },
+        id: {
+            type: String,
+        },
     },
+    
 };
 </script>
 
@@ -26,10 +31,15 @@ export default {
 .show-recipe {
     border: 1px solid var(--silver);
     text-align: center;
+    color: black;
     padding: 15px;
     margin: 15px;
     width: 30%;
-    min-width: 300px;
+    min-width: 200px;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 .name {

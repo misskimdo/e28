@@ -59,7 +59,7 @@ h2 {
 }
 
 #app {
-    max-width: 1000px;
+    max-width: 1920px;
     width: 100%;
     margin: auto;
     padding-bottom: 20px;
@@ -91,12 +91,11 @@ a:hover,
 a:active {
     /* Ref: https://stackoverflow.com/a/49783868 for why inline-block is added */
     display: inline-block;
-    text-transform: capitalize;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
     color: var(--blue);
-    font-weight: bold;
+
 }
 
 nav ul li a.router-link-active:link,

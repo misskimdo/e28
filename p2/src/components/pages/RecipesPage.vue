@@ -2,12 +2,18 @@
     <div id="recipes-page">
         <h2>Recipes</h2>
         <div id="recipes">
-            <show-recipe
+        <router-link
                 v-for="recipe in recipes"
                 v-bind:key="recipe.id"
+                v-bind:to="'/recipe/' + recipe.id"
+                >
+            <show-recipe
+            id="recipe"
                 v-bind:recipe="recipe"
             ></show-recipe>
-        </div>
+        </router-link>
+            
+    </div>
     </div>
 </template>
 
@@ -33,5 +39,11 @@ recipes: recipes
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+    
 }
+
+/* #recipe {
+    width: 500px;
+    border: 1px;
+} */
 </style>

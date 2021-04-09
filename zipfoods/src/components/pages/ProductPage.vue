@@ -1,59 +1,48 @@
 <template>
-  <div id='product-page'>
-        <div class="name">{{ product.name }}</div>
+    <div id="product-page">
+        <div v-if="productNotFound">
+            <p>Product {{ id }} not found.</p>
+            <router-link v-bind:to="'/products'"
+                >Go to all products</router-link
+            >
+        </div>
 
-        <img
-            class="thumb"
-            v-bind:src="
-                require('@/assets/images/products/' + product.id + '.jpg')
-            "
-        />
-
-        <div class="price">${{ product.price }}</div>
-        <p class="description">{{ product.description }}</p>
+        <div v-else-if="product">
+            <show-product
+                v-bind:product="product"
+                v-bind:detailed="true"
+            ></show-product>
+        </div>
     </div>
 </template>
 
 <script>
+import ShowProduct from "@/components/ShowProduct.vue";
 export default {
-props: {
-        product: {
-            type: Object,
+    components: {
+        "show-product": ShowProduct,
+    },
+    props: {
+        id: {
+            type: String,
+        },
+        products: {
+            type: Array,
+            default: null,
+        },
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        product() {
+            return this.products.filter((product) => {
+                return product.id == this.id;
+            }, this.id)[0];
+        },
+        productNotFound() {
+            return this.product == null;
         },
     },
 };
 </script>
-
-<style scoped>
-.show-product {
-    border: 1px solid var(--silver);
-    text-align: center;
-    padding: 15px;
-    margin: 15px;
-    width: 30%;
-    min-width: 300px;
-}
-.name {
-    height: 50px;
-    font-size: 2rem;
-    margin: 5px 0 10px 0;
-    vertical-align: baseline;
-}
-.thumb {
-    width: 75%;
-    max-width: 300px;
-    border-radius: var(--radius);
-}
-.description {
-    margin: auto;
-    text-align: left;
-    font-style: italic;
-    line-height: 1.5;
-}
-.price {
-    font-family: var(--serif-font);
-    font-weight: bold;
-    font-size: 2rem;
-    padding: 10px;
-}
-</style>

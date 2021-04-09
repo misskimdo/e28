@@ -1,0 +1,39 @@
+{
+    "permission_level": 0,
+    "fields": {
+        "name": {
+            "type": "string",
+            "validators": [
+                "required",
+                "min:3",
+                "max:100"
+            ]
+        },
+        "description": {
+            "type": "text",
+            "validators": [
+                "required",
+                "min:100"
+            ]
+        },
+        "ingredients": {
+            "type": "text",
+            "validators": []
+        },
+        "directions": {
+            "type": "text",
+            "validators": []
+        },
+        "categories": {
+            "type": "string",
+            "validators": []
+        },
+        "recipe_id": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
+        }
+    }
+}

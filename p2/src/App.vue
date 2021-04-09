@@ -33,10 +33,9 @@ export default {
         paths: {
             home: '/',
             recipes: '/recipes',
-            recipe: '/recipe/:id',
+            // recipe: '/recipe/:id',
             categories: '/categories',
         },
-
         };
   },
 };
