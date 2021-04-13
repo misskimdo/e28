@@ -51,11 +51,35 @@ html {
 
 body {
     /* Default font-size */
+    padding-top: 100px;
     font-size: 1.6rem;
 }
 
 h2 {
-    font-size: 2.75rem;
+    font-size: 45pt;
+    font-family: Nunito;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 25pt;
+    font-family: Nunito;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-size: 15pt;
+    font-family: Nunito;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+
+p {
+    font-size: 10pt;
+    font-family: Nunito;
+    font-weight: 100;
 }
 
 #app {
@@ -66,15 +90,20 @@ h2 {
     text-align: center;
 }
 
-header {
-    text-align: center;
-    margin-top: 20px;
+#header {
+    float: left;
+    margin-top: 80px;
+
 }
 
 #logo {
     /* Actual width is 636; displaying at half-size for retina screens */
-    width: 318px;
-    margin-top: 15px;
+    width: 250px;
+    position: absolute;
+    top:20px;
+    left:20px;
+    margin: 20px;
+    /* margin-top: 15px; */
 }
 
 nav ul {
@@ -83,11 +112,13 @@ nav ul {
 
 nav ul li {
     display: inline-block;
+    float: right;
+    margin: -50px 20px 100px 0;
 }
 
 nav ul li a:link,
 a:visited,
-a:hover,
+/* a:hover, */
 a:active {
     /* Ref: https://stackoverflow.com/a/49783868 for why inline-block is added */
     display: inline-block;
@@ -95,6 +126,7 @@ a:active {
     margin: 5px;
     cursor: pointer;
     color: var(--blue);
+    
 
 }
 
@@ -104,11 +136,45 @@ a.router-link-active:hover,
 a.router-link-active:active {
     text-decoration: none;
     color: var(--black);
-    background-color: var(--light-blue);
+    background-color: #d8e3e4;
+    border-radius: 4px;
     cursor: inherit;
 }
 
+label {
+    font-family: Nunito;
+    font-size: 13pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 50px;
+}
 
+input,textarea {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #ebf0f3;
+    border: none;
+    font-family: Nunito;
+    font-size: 13pt;
+    font-weight: 300;
+}
+
+button {
+    background-color: #004394;
+    font-family: Nunito;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
 
 /*----------------------------------------------------
 MISC

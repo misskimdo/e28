@@ -1,6 +1,5 @@
 <template>
     <div id="recipes-page">
-        <h2>Recipes</h2>
         <div id="recipes">
         <router-link
                 v-for="recipe in recipes"

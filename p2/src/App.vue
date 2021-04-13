@@ -1,7 +1,9 @@
 <template>
 <div>
+<div>
   <img id="logo" src="@/assets/images/kimskitchen-logo.png">
-
+  </div>
+<div id="nav">
   <nav>
     <ul>
         <li>
@@ -15,29 +17,40 @@
     </ul>
 </nav>
 
-<router-view></router-view>
+<router-view v-bind:recipes='recipes' v-on:update-recipes='loadRecipes'></router-view>
+  </div>
   </div>
 </template>
 
 <script>
-import { recipes } from '@/common/recipes.js';
+import {axios} from '@/common/app.js';
 
 export default {
   name: "App",
   data() {
     return {
-        recipes: recipes,
-        links: ['home', 'recipes', 'categories'],
+        recipes: [],
 
-    /* Map links to the appropriate component */
+        links: ['home', 'recipes', 'add a recipe', 'categories'],
+
         paths: {
             home: '/',
             recipes: '/recipes',
-            // recipe: '/recipe/:id',
-            categories: '/categories',
+            'add a recipe': '/recipe/new',
+            categories: "/categories"
         },
         };
   },
+  mounted() {
+    this.loadRecipes();
+  },
+  methods: {
+    loadRecipes() {
+      axios.get('recipe').then((response) => {
+      this.recipes = response.data.recipe;
+    });
+    }
+  }
 };
 </script>
 

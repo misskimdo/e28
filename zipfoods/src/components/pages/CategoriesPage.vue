@@ -22,7 +22,9 @@ export default {
     },
     computed: {
         categories() {
-            let categories = this.products.map((product) => product.categories.split(','));
+            let categories = this.products.map((product) =>
+                product.categories.split(",")
+            );
             let mergedCategories = [].concat.apply([], categories);
             // Return unique, sorted categories
             return [...new Set(mergedCategories)].sort();

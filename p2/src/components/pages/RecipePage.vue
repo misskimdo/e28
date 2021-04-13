@@ -1,66 +1,82 @@
 <template>
 
-  <div class="show-recipe">
-        <div class="name" >{{ name}}</div>
+  <div class='show-recipe'>
+        <!-- <h3 class='name' v-bind:key='recipe.name' v-bind:recipe='recipe' >{{ recipe.name}}</h3> -->
+
+    <div class='recipe-img'>
+        <!-- <h3 class='name' v-bind:id='name'>{{recipe.name}}</h3> -->
+        <h3 class='name' v-for='(name, id) in recipes' v-bind:key='id'>{{ recipe.name}}</h3>
 
         <img
-            class="thumb"
-            v-bind:src="require('@/assets/images/foods/' + id + '.jpg')"
+            v-bind:src="imgSrc"
         />
-        <p class="description">{{ description }}</p>
-        <div class="ingredients">{{ ingredients }}</div>
-        <div class="directions">{{ directions }}</div>
     </div>
+    <div class='recipe-details'>
+        <p class="description" v-for='(description, id) in recipes' v-bind:key='id'>{{ recipe.description }}</p>
+        <h4>Ingredients</h4>
+        <ul class="ingredients" v-for='(ingredients, id) in recipes' v-bind:key='id'>{{ recipe.ingredients }}</ul>
+        <h4>Directions</h4>
+        <ul class="directions" v-for='(directions, id) in recipes' v-bind:key='id'>{{ recipe.directions }}</ul>
+    </div>
+</div>
 </template>
 
 <script>
-import { recipes } from '@/common/recipes.js';
+
 export default {
-    data() {
-    return {
-    recipes: recipes,
-    };
-  },
     props: {
-        recipe: {
-            type: Object,
+        recipes: {
+            type: Array,
+            default: null,
         },
         id: {
             type: String,
         },
-        name: {
-            type: String,
-        },
-        ingredients: {
-            type: Text,
-        },
     },
-    
-};
+    data() {
+        return {
+        };
+    },
+    computed: {
+        recipe() {
+            return this.recipes.filter((recipe) => {
+            return recipe.id == this.id;
+            }, this.id)[0];
+        },
+        imgSrc() {
+            try {
+                return require('@/assets/images/foods/' + this.recipe.id + '.jpg');
+            } catch (e) {
+                return require('@/assets/images/food_icon.jpg');
+            }
+    },
+    },
+}; 
 </script>
 
 <style scoped>
 .show-recipe {
-    border: 1px solid var(--silver);
-    text-align: center;
-    padding: 15px;
-    margin: 15px;
-    width: 30%;
-    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+    margin-top: 100px;
 }
 
-.name {
+/* .name {
     height: 50px;
     font-size: 2rem;
     margin: 5px 0 10px 0;
     vertical-align: baseline;
     font-weight: bold;
+} */
+
+.recipe-img {
+    margin: 0 20px 0 20px;
 }
 
-.thumb {
-    width: 480px;
-    padding-bottom: 20px;
-    border-radius: var(--radius);
+.recipe-details{
+    margin: 100px 20px 0 20px;
 }
 
 .description {

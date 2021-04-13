@@ -5,11 +5,9 @@
 
         <img
             class="thumb"
-            v-bind:src="require('@/assets/images/foods/' + recipe.id + '.jpg')"
+            v-bind:src="imgSrc"
         />
-        <!-- <p class="description">{{ recipe.description }}</p>
-        <div class="ingredients">{{ recipe.ingredients }}</div>
-        <div class="directions">{{ recipe.directions }}</div> -->
+    <p class="description">{{ recipe.description }}</p>
     </div>
 </template>
 
@@ -23,24 +21,34 @@ export default {
             type: String,
         },
     },
-    
+    computed: {
+        imgSrc() {
+            try {
+                return require('@/assets/images/foods/' + this.recipe.id + '.jpg');
+            } catch (e) {
+                return require('@/assets/images/food_icon.jpg');
+            }
+    },
+    },
 };
 </script>
 
 <style scoped>
 .show-recipe {
-    border: 1px solid var(--silver);
+    border: 1px solid lightgrey;
     text-align: center;
     color: black;
     padding: 15px;
     margin: 15px;
     width: 30%;
-    min-width: 200px;
+    min-width: 300px;
+    font-size: 10pt;
+    font-family: Nunito;
+    font-weight: 100;
+    text-transform: uppercase;
+    height: 590px;
 }
 
-a:link {
-  text-decoration: none;
-}
 
 .name {
     height: 50px;
@@ -59,15 +67,12 @@ a:link {
 
 .description {
     margin: auto;
-    text-align: left;
-    font-style: italic;
+    text-align: center;
     font-size: 10pt;
     line-height: 1.5;
-}
-
-.ingredients {
-    font-family: var(--serif-font);
     font-size: 12pt;
-    padding: 10px;
+    font-family: Nunito;
+    font-weight: 200;
+    text-transform: none;
 }
 </style>

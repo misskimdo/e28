@@ -1,41 +1,101 @@
 <template>
   <div id="home-page">
-      <p>A collection of foods and bakes by Kim.</p>
-  <show-favorites></show-favorites>
+  <h3 id= "latest-title">Latest Recipes</h3>
+  <div id='latest-recipes'>
+      
+  <router-link
+                v-for="recipe in recipes.slice().reverse()"
+                v-bind:key="recipe.id"
+                v-bind:to="'/recipe/' + recipe.id"
+                >
+                <div id="recipe">
+            <show-recipe
+                v-bind:recipe="recipe"
+            ></show-recipe>
+                </div>
+        </router-link>
   </div>
   <div id='categories-page'>
-        <h2>Categories</h2>
+        <h3>Categories</h3>
         <ul class='clean-list'>
-            <li v-for='(category, id) in categories' v-bind:key='id'>{{ category }}</li>
+            <li v-for="(category, id) in categories" v-bind:key="id">{{ category }}</li>
         </ul>
+    </div>
     </div>
 </template>
 
 <script>
-import ShowFavorites from '@/components/ShowFavorites.vue';
-import { recipes } from '@/common/recipes.js';
+import ShowRecipe from '@/components/ShowRecipe.vue';
 
 export default {
+props: {
+        recipes: {
+            type: Array,
+            default: null
+        },
+    },
 data() {
-    return {
-    recipes: recipes,
-    };
+    return {};
   },
 components: {
-    "show-favorites": ShowFavorites,
+    "show-recipe": ShowRecipe,
   },
-  computed: {
+computed: {
     categories() {
-    let categories = this.recipes.map(recipe => recipe.categories);
-    let mergedCategories = [].concat.apply([], categories);
+    let categories = this.recipes.map((recipe) =>
+                recipe.categories.split("|")
+            );
+            let mergedCategories = [].concat.apply([], categories);
+            return [...new Set(mergedCategories)].sort();
+},
+  //   latestRecipes () {
+  //   return this.recipes[this.recipes.length - 1].id;
+  // }
+},
+// filters: {
+//     reverse() {
+//       return this.recipes.slice().reverse()
+//     }
+// }
+}
 
-    // Return unique, sorted categories
-    return [...new Set(mergedCategories)].sort();
-}
-}
-}
 </script>
 
 <style>
+#home-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+
+}
+
+#latest-title {
+  margin-top: 100px;
+  
+}
+
+#latest-recipes {
+  display: flex;
+    flex-wrap: wrap;
+  width: 80%;
+  margin: 100px 0 0 0;
+}
+
+#categories-page {
+  width: 10%;
+  margin: 100px 0 0 0;
+  text-align: left;
+}
+
+#recipe {
+  width: 300px;
+  margin: 0 10px;
+}
+
+/* #individual-recipe {
+  display: flex;
+    flex-wrap: wrap;
+} */
 
 </style>
