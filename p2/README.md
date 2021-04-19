@@ -7,21 +7,31 @@ _Any instructions/notes in italics should be removed from the template before su
 
 ## Pages summary
 
-_List the "pages" of your application_
+- Home
+- All Recipes
+- Add a Recipe
 
 ## SFC summary
 
-_List the SFCs of your application_
+- ShowRecipe.vue
+- AddRecipe.vue
+- HomePage.vue
+- NewRecipes.vue
+- RecipePage.vue
+- RecipesPage.vue
 
 ## Server interaction
 
-_List the features in your application that are persisting and retrieving data from the server_
+- Add recipes
+- Newest recipes show up first on "Latest Recipes" section on homepage and at the end of "All Recipes"
 
 ## Outside resources
 
 ### Code
 
-[favorite button](https://stackoverflow.com/questions/41869758/how-to-add-a-favorite-unfavorite-button-with-vue-js-2)
+[vue router link to one item](https://stackoverflow.com/questions/47239742/vue-js-passing-array-from-one-page-to-another)
+
+[vue show last x items](https://stackoverflow.com/questions/46622209/how-to-limit-iteration-of-elements-in-v-for)
 
 ### Graphics
 
@@ -30,8 +40,5 @@ _List the features in your application that are persisting and retrieving data f
 
 ### Fonts
 
-[Nunito Font](https://fonts.google.com/specimen/Nunito?preview.text_type=custom#standard-styles)
+[Nunito Font](https://fonts.adobe.com/fonts/nunito)
 
-## Notes for instructor
-
-_Any notes for me to refer to while grading; if none, omit this section_

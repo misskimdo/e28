@@ -2,9 +2,11 @@
     <div id='add-recipe'>
         <h1>Add a New Recipe</h1>
 <div v-if="showConfirmation" id='confirm'>Your recipe was added</div>
-        <h4><ul>
+        <div>
+        <ul>
       <li id='errors' v-for="error in errors" v-bind:key="error">{{ error.join('') }}</li>
-    </ul></h4>
+    </ul>
+    </div>
         <div id="inputs">
             <div>
             <label for="name">Name </label>
@@ -41,7 +43,7 @@ export default {
             recipe: {
                 name: "Thai Basil Fried Rice",
                 description:
-                    "A super fragrant fried-rice recipe, with strong Thai basil scents and spicy umami flavors. Add as much chili as you like for a kick.",
+                    "A fragrant fried-rice recipe, with strong Thai basil and spicy umami flavors. Add as much chili as you like for a kick.",
                 ingredients:
                     "5 garlic cloves",
                 directions:
@@ -71,12 +73,18 @@ export default {
 
 #add-recipe {
     padding-top: 200px;
-    width: 100%;
+    width: 500px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    #add-recipe {
+        padding-top: 0;
+    }
 }
 
 #inputs {
     text-align: left;
-    margin: 0 500px;
 }
 
 ul {
@@ -84,14 +92,20 @@ ul {
 }
 
 #confirm {
-    color: teal;
-    font-size: 15pt;
+    color: white;
+    background-color: teal;
+    font-size: 13pt;
+    font-weight: 100;
     text-transform: uppercase;
+    padding: 10px;
 }
 
 #errors {
-    color: #CC9817;
-    font-size: 15pt;
+    color: white;
+    background-color: #CC9817;
+    font-size: 13pt;
+    font-weight: 100;
     text-transform: uppercase;
+    padding: 10px;
 }
 </style>

@@ -31,10 +31,9 @@ export default {
             default: null
         }
     },
-data (){
-    return {
+    data (){
+        return {}
     }
-}
 }
 </script>
 
@@ -42,6 +41,12 @@ data (){
 #recipes-page {
     padding-top: 200px;
     width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    #recipes-page {
+    padding-top: 0;
+}
 }
 
 #recipes {

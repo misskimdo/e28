@@ -31,11 +31,11 @@ export default {
     return {
         recipes: [],
 
-        links: ['home', 'recipes', 'add a recipe'],
+        links: ['home', 'all recipes', 'add a recipe'],
 
         paths: {
             home: '/',
-            recipes: '/recipes',
+            'all recipes': '/recipes',
             'add a recipe': '/recipe/new',
         },
         };

@@ -10,9 +10,7 @@ import {
 import HomePage from '@/components/pages/HomePage.vue';
 import RecipesPage from '@/components/pages/RecipesPage.vue';
 import RecipePage from '@/components/pages/RecipePage.vue';
-// import CategoriesPage from '@/components/pages/CategoriesPage.vue';
 import AddRecipe from '@/components/pages/AddRecipe.vue';
-import EditRecipe from '@/components/pages/EditRecipe.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,16 +27,10 @@ const router = createRouter({
             component: RecipePage,
             props: true
         },
-        { 
-            path: '/recipe/new', 
-            component: AddRecipe },
-        { 
-            path: '/recipe/edit', 
-            component: EditRecipe },
-        // {
-        //     path: '/categories',
-        //     component: CategoriesPage
-        // },
+        {
+            path: '/recipe/new',
+            component: AddRecipe
+        },
     ]
 })
 

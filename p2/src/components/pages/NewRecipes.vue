@@ -30,10 +30,9 @@ export default {
             default: null
         }
     },
-data (){
-    return {
+    data (){
+        return {}
     }
-}
 }
 </script>
 
@@ -53,7 +52,7 @@ data (){
 }
 
 a:link {
-  text-decoration: none
+    text-decoration: none
 }
 
 a:hover {
