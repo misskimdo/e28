@@ -35,9 +35,6 @@ export default {
         return {
         };
     },
-    // mounted() {
-    //     if (this.$recipe.name.length === 0) this.$recipe.dispatch('loadRecipes');
-    //     },
     computed: {
         recipe() {
             return this.recipes.filter((recipe) => {
@@ -50,11 +47,6 @@ export default {
             } catch (e) {
                 return require('@/assets/images/food_icon.jpg');
             }
-        },
-        ingredientsSplit() {
-            let ingredients = this.recipes.map((recipe) =>
-            recipe.ingredients.split('|'));
-            return ingredients;
         }
     },
 } 
