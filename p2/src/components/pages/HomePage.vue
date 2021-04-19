@@ -10,7 +10,7 @@
                 v-bind:to="'/recipe/' + recipe.id"
                 > -->
                 <div id='random-recipe'>
-  <show-recipe
+            <show-recipe
                 v-bind:recipe="randomRecipe"
             ></show-recipe>
             </div>
