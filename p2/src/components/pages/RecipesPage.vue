@@ -1,6 +1,6 @@
 <template>
     <div id="recipes-page">
-        <h2>Recipes</h2>
+        <h1>Recipes</h1>
         <div id="recipes">
         <router-link
                 v-for="recipe in recipes"
@@ -39,6 +39,11 @@ data (){
 </script>
 
 <style scoped>
+#recipes-page {
+    padding-top: 200px;
+    width: 100%;
+}
+
 #recipes {
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +51,6 @@ data (){
     text-align: center;
     
 }
-
 #recipe {
     width: 300px;
     margin: 20px;
@@ -58,6 +62,6 @@ a:link {
 }
 
 a:hover {
-    color: teal;
+    color:#6f727c;
 }
 </style>

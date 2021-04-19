@@ -6,31 +6,8 @@ VARIABLES
 
     --sans-serif-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --serif-font: Georgia, 'Times New Roman', Times, serif;
-
-    /* https://clrs.cc/ */
-    --blue: #0074D9;
-    --light-blue: #CAE9FB;
-    --teal: #39CCCC;
-    --green: #2ECC40;
-
-    --olive: #3D9970;
-
-    --yellow: #FFDC00;
-    --orange: #FF851B;
-    --red: #FF4136;
-
-    --white: #FFFFFF;
-    --silver: #DDDDDD;
-    --gray: #AAAAAA;
-    --black: #111111;
 }
 
-
-
-/*----------------------------------------------------
-MAIN LAYOUT
------------------------------------------------------*/
-/* universal box-sizing */
 *,
 *::before,
 *::after {
@@ -42,7 +19,7 @@ html {
     font-size: 62.5%;
 
     color: var(--black);
-    font-family: var(--sans-serif-font);
+    font-family: Nunito;
 
     /* Have the scroll bars always on so there's not a shift in the layout
     when going from a non-scrolling page to a scrolling-page */
@@ -51,26 +28,23 @@ html {
 
 body {
     /* Default font-size */
-    padding-top: 100px;
     font-size: 1.6rem;
 }
 
-h2 {
-    font-size: 45pt;
+h1 {
+    font-size: 25pt;
     font-family: Nunito;
     font-weight: 500;
     text-transform: uppercase;
 }
-h3 {
+h2 {
     font-size: 25pt;
-    font-family: Nunito;
     font-weight: 400;
     text-transform: uppercase;
 }
 
-h4 {
+h3 {
     font-size: 15pt;
-    font-family: Nunito;
     font-weight: 300;
     text-transform: uppercase;
 }
@@ -78,54 +52,38 @@ h4 {
 
 p {
     font-size: 10pt;
-    font-family: Nunito;
     font-weight: 100;
 }
 
 #app {
-    max-width: 1920px;
     width: 100%;
     margin: auto;
     padding-bottom: 20px;
     text-align: center;
 }
 
-#header {
-    float: left;
-    margin-top: 80px;
-
-}
-
 #logo {
-    /* Actual width is 636; displaying at half-size for retina screens */
     width: 250px;
-    position: absolute;
-    top:20px;
-    left:20px;
-    margin: 20px;
-    /* margin-top: 15px; */
-}
-
-nav ul {
-    list-style-type: none;
+    float: left;
+    position: relative;
+    margin: 10px 15px 15px 10px;
 }
 
 nav ul li {
     display: inline-block;
-    float: right;
-    margin: -50px 20px 100px 0;
+    list-style-type: none;
+    float: left;
+    padding: 80px;
 }
 
 nav ul li a:link,
 a:visited,
-/* a:hover, */
 a:active {
-    /* Ref: https://stackoverflow.com/a/49783868 for why inline-block is added */
-    display: inline-block;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
-    color: var(--blue);
+    text-decoration: none;
+    color: #004394;
     
 
 }
@@ -135,8 +93,8 @@ a.router-link-active:visited,
 a.router-link-active:hover,
 a.router-link-active:active {
     text-decoration: none;
-    color: var(--black);
-    background-color: #d8e3e4;
+    color: white;
+    background-color: #004394;
     border-radius: 4px;
     cursor: inherit;
 }
@@ -176,30 +134,9 @@ button {
     cursor: pointer;
 }
 
-/*----------------------------------------------------
-MISC
------------------------------------------------------*/
-.clean-list {
-    list-style-type: none;
-    padding: 0;
-}
+button:hover {
+    background-color: #d8e3e4;
+    color: #004394;
+    border: none;
+  }
 
-.alert {
-    background-color: var(--green);
-    color: var(--white);
-    border-radius: radius;
-    font-weight: bold;
-    padding: 5px;
-    margin: 5px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity .5s;
-}
-
-/* .fade-leave-active below version 2.1.8 */
-.fade-enter,
-.fade-leave-to {
-    opacity: 0;
-}

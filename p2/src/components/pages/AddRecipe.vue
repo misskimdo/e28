@@ -1,18 +1,19 @@
 <template>
-    <div>
-        <h3 id='add-recipe'>Add a New Recipe</h3>
-
+    <div id='add-recipe'>
+        <h1>Add a New Recipe</h1>
+<div v-if="showConfirmation" id='confirm'>Your recipe was added</div>
+        <h4><ul>
+      <li id='errors' v-for="error in errors" v-bind:key="error">{{ error.join('') }}</li>
+    </ul></h4>
         <div id="inputs">
             <div>
             <label for="name">Name </label>
             <input type="text" v-model="recipe.name" id="name" />
-            <div v-if="showConfirmation">Please add a name.</div>
             </div>
             
             <div>
             <label for="description">Description </label>
             <textarea v-model="recipe.description" id="description"></textarea>
-            <div v-if="showConfirmation">Please add a description.</div>
             </div>
             
             <div> 
@@ -27,10 +28,6 @@
         </div>
 
         <button v-on:click="addRecipe">Add Recipe</button>
-        <div v-if="showConfirmation">Your recipe was added</div>
-        <h4><ul>
-      <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-    </ul></h4>
     </div>
 </template>
 
@@ -73,7 +70,8 @@ export default {
 <style scoped>
 
 #add-recipe {
-
+    padding-top: 200px;
+    width: 100%;
 }
 
 #inputs {
@@ -83,5 +81,17 @@ export default {
 
 ul {
     list-style-type: none;
+}
+
+#confirm {
+    color: teal;
+    font-size: 15pt;
+    text-transform: uppercase;
+}
+
+#errors {
+    color: #CC9817;
+    font-size: 15pt;
+    text-transform: uppercase;
 }
 </style>

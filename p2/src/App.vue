@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="nav-header">
 <div>
   <img id="logo" src="@/assets/images/kimskitchen-logo.png">
   </div>
@@ -31,13 +31,12 @@ export default {
     return {
         recipes: [],
 
-        links: ['home', 'recipes', 'add a recipe', 'categories'],
+        links: ['home', 'recipes', 'add a recipe'],
 
         paths: {
             home: '/',
             recipes: '/recipes',
             'add a recipe': '/recipe/new',
-            categories: "/categories"
         },
         };
   },

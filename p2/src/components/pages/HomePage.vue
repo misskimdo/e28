@@ -1,10 +1,28 @@
 <template>
   <div id="home-page">
-  <h3 id= "latest-title">Latest Recipes</h3>
+  <h1>Need An Idea?</h1>
+
+<div>
+  <button v-on:click="choose" id="choose-button">Give me a random recipe</button>
+  </div>
+  <!-- <router-link
+                v-bind:recipe="recipe.id"
+                v-bind:to="'/recipe/' + recipe.id"
+                > -->
+                <div id='random-recipe'>
+  <show-recipe
+                v-bind:recipe="randomRecipe"
+            ></show-recipe>
+            </div>
+            <!-- </router-link> -->
+            
+                <!-- </div> -->
+
+<h1>Latest Recipes</h1>
   <div id='latest-recipes'>
       
   <router-link
-                v-for="recipe in recipes.slice().reverse()"
+                v-for="recipe in recipes.slice(7).reverse()"
                 v-bind:key="recipe.id"
                 v-bind:to="'/recipe/' + recipe.id"
                 >
@@ -15,71 +33,58 @@
                 </div>
         </router-link>
   </div>
-  <div id='categories-page'>
+  </div>
+  <!-- <div id='categories-page'>
         <h3>Categories</h3>
         <ul class='clean-list'>
             <li v-for="(category, id) in categories" v-bind:key="id">{{ category }}</li>
         </ul>
-    </div>
-    </div>
+    </div> -->
+    
 </template>
 
 <script>
 import ShowRecipe from '@/components/ShowRecipe.vue';
 
 export default {
-props: {
-        recipes: {
-            type: Array,
-            default: null
-        },
+    props: {
+            recipes: {
+                type: Array,
+                default: null
+            },
     },
-data() {
-    return {};
-  },
-components: {
-    "show-recipe": ShowRecipe,
-  },
-computed: {
-    categories() {
-    let categories = this.recipes.map((recipe) =>
-                recipe.categories.split("|")
-            );
-            let mergedCategories = [].concat.apply([], categories);
-            return [...new Set(mergedCategories)].sort();
-},
-  //   latestRecipes () {
-  //   return this.recipes[this.recipes.length - 1].id;
-  // }
-},
-// filters: {
-//     reverse() {
-//       return this.recipes.slice().reverse()
-//     }
-// }
+    data() {
+        return {
+          randomRecipe: []
+        };
+    },
+    components: {
+        "show-recipe": ShowRecipe,
+    },
+    
+    methods: {
+        choose() {
+          const randomRecipe = Math.floor(Math.random() * this.recipes.length);
+          this.randomRecipe = this.recipes[randomRecipe];
+        }
+    }
 }
 
 </script>
 
 <style>
 #home-page {
+  padding-top: 200px;
+  width: 100%;
+}
+
+#random-recipe,
+#latest-recipes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: left;
 
-}
-
-#latest-title {
-  margin-top: 100px;
-  
-}
-
-#latest-recipes {
-  display: flex;
-    flex-wrap: wrap;
-  width: 80%;
-  margin: 100px 0 0 0;
 }
 
 #categories-page {
@@ -91,6 +96,14 @@ computed: {
 #recipe {
   width: 300px;
   margin: 0 10px;
+}
+
+a:link {
+  text-decoration: none
+}
+
+a:hover {
+    color:#6f727c ;
 }
 
 /* #individual-recipe {

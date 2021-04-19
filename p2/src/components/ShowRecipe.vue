@@ -1,5 +1,5 @@
 <template>
-
+<div>
   <div class="show-recipe">
         <div class="name">{{ recipe.name }}</div>
 
@@ -7,6 +7,7 @@
             class="thumb"
             v-bind:src="imgSrc"
         />
+    </div>
     <p class="description">{{ recipe.description }}</p>
     </div>
 </template>
@@ -35,34 +36,38 @@ export default {
 
 <style scoped>
 .show-recipe {
-    border: 1px solid lightgrey;
+    position: relative;
+    margin-top: 20px;
+}
+
+.show-recipe:hover .name  {
+    opacity: 1;
+    
     text-align: center;
-    color: black;
-    padding: 15px;
-    margin: 15px;
-    width: 30%;
-    min-width: 300px;
-    font-size: 10pt;
-    font-family: Nunito;
-    font-weight: 100;
-    text-transform: uppercase;
-    height: 590px;
 }
 
 
 .name {
-    height: 50px;
-    font-size: 2rem;
-    margin: 5px 0 10px 0;
-    vertical-align: baseline;
-    font-weight: bold;
+    position: absolute; 
+    bottom: 0; 
+    background: rgba(0, 67, 148, 0.7); 
+    color: #f1f1f1; 
+    text-transform: uppercase;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
 .thumb {
-    width: 100%;
-    max-width: 300px;
-    padding-bottom: 20px;
-    border-radius: var(--radius);
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    height: auto;
+    width: 300px;
 }
 
 .description {
@@ -74,5 +79,6 @@ export default {
     font-family: Nunito;
     font-weight: 200;
     text-transform: none;
+    width: 300px;
 }
 </style>

@@ -10,7 +10,7 @@ import {
 import HomePage from '@/components/pages/HomePage.vue';
 import RecipesPage from '@/components/pages/RecipesPage.vue';
 import RecipePage from '@/components/pages/RecipePage.vue';
-import CategoriesPage from '@/components/pages/CategoriesPage.vue';
+// import CategoriesPage from '@/components/pages/CategoriesPage.vue';
 import AddRecipe from '@/components/pages/AddRecipe.vue';
 import EditRecipe from '@/components/pages/EditRecipe.vue';
 
@@ -35,10 +35,10 @@ const router = createRouter({
         { 
             path: '/recipe/edit', 
             component: EditRecipe },
-        {
-            path: '/categories',
-            component: CategoriesPage
-        },
+        // {
+        //     path: '/categories',
+        //     component: CategoriesPage
+        // },
     ]
 })
 

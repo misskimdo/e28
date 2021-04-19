@@ -1,24 +1,19 @@
 <template>
 
-  <div class='show-recipe'>
-        <!-- <h3 class='name' v-bind:key='recipe.name' v-bind:recipe='recipe' >{{ recipe.name}}</h3> -->
+  <div id='show-recipe'>
+        <img id='recipe-img' v-bind:src='imgSrc'/>
 
-    <div class='recipe-img'>
-        <!-- <h3 class='name' v-bind:id='name'>{{recipe.name}}</h3> -->
-        <h3 class='name' v-for='(name, id) in recipes' v-bind:key='id'>{{ recipe.name}}</h3>
-
-        <img
-            v-bind:src="imgSrc"
-        />
+        <div id='recipe-details'>
+            <h1>{{ recipe.name}}</h1>
+            <p>{{ recipe.description }}</p>
+            <h3>Ingredients</h3>
+            <ul>{{ recipe.ingredients.split('|').join(' •  ') }} </ul>
+            <h3>Directions</h3>
+            <ul>{{ recipe.directions.split('|').join(' ') }}</ul>
+            <h3>Categories</h3>
+            <ul>{{ recipe.categories.split('|').join(', ') }}</ul>
+        </div>
     </div>
-    <div class='recipe-details'>
-        <p class="description" v-for='(description, id) in recipes' v-bind:key='id'>{{ recipe.description }}</p>
-        <h4>Ingredients</h4>
-        <ul class="ingredients" v-for='(ingredients, id) in recipes' v-bind:key='id'>{{ recipe.ingredients }}</ul>
-        <h4>Directions</h4>
-        <ul class="directions" v-for='(directions, id) in recipes' v-bind:key='id'>{{ recipe.directions }}</ul>
-    </div>
-</div>
 </template>
 
 <script>
@@ -32,11 +27,17 @@ export default {
         id: {
             type: String,
         },
+        name: {
+            type: String,
+        }
     },
     data() {
         return {
         };
     },
+    // mounted() {
+    //     if (this.$recipe.name.length === 0) this.$recipe.dispatch('loadRecipes');
+    //     },
     computed: {
         recipe() {
             return this.recipes.filter((recipe) => {
@@ -49,47 +50,52 @@ export default {
             } catch (e) {
                 return require('@/assets/images/food_icon.jpg');
             }
+        },
+        ingredientsSplit() {
+            let ingredients = this.recipes.map((recipe) =>
+            recipe.ingredients.split('|'));
+            return ingredients;
+        }
     },
-    },
-}; 
+} 
 </script>
 
 <style scoped>
-.show-recipe {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+#show-recipe {
+    padding-top: 200px;
+    width: 90%;
     text-align: left;
-    margin-top: 100px;
 }
 
-/* .name {
-    height: 50px;
-    font-size: 2rem;
-    margin: 5px 0 10px 0;
-    vertical-align: baseline;
-    font-weight: bold;
+#recipe-img {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 30px;
+}
+
+/* #bg-div {
+   overflow: hidden;
 } */
 
-.recipe-img {
-    margin: 0 20px 0 20px;
+#recipe-details{
+    display: inline-block;
+    margin: 30px;
+    width: 60%;
+    @media (max-width: 620px) {
+      width: 90%;
+      margin: 0;}
 }
 
-.recipe-details{
-    margin: 100px 20px 0 20px;
+p, h2, h3 {
+    text-align: left;
 }
 
 .description {
     margin: auto;
-    text-align: left;
     font-style: italic;
     font-size: 13pt;
     line-height: 1.5;
 }
 
-.ingredients {
-    font-family: var(--serif-font);
-    font-size: 13pt;
-    padding: 10px;
-}
 </style>
