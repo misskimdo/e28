@@ -12,19 +12,21 @@ VARIABLES
 }
 
 
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+#app {
+  font-family: 'Nunito', sans-serif;
+}
+
 html {
     font-size: 62.5%;
-
+    font-family: 'Nunito', sans-serif;
     color: var(--black);
-    font-family: Nunito;
-
-    /* Have the scroll bars always on so there's not a shift in the layout
-    when going from a non-scrolling page to a scrolling-page */
     overflow-y: scroll;
 }
 
 body {
-    /* Default font-size */
+    font-family: 'Nunito', sans-serif;
     font-size: 1.6rem;
 }
 
