@@ -51,7 +51,7 @@ export default {
     },
     data() {
         return {
-          randomRecipe: 0
+          randomRecipe: false
         };
     },
     methods: {
