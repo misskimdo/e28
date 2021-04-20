@@ -10,7 +10,11 @@
           >
           <div id='random-recipe'>
               <show-recipe
+<<<<<<< HEAD
                   v-show="visible"
+=======
+                  v-show="randomRecipe"
+>>>>>>> 884603d7ab9fbbad56987a57adab2b91f2cd4644
                   v-bind:recipe="randomRecipe"
               ></show-recipe>
           </div>
@@ -51,8 +55,12 @@ export default {
     },
     data() {
         return {
+<<<<<<< HEAD
           randomRecipe: [],
           visible: false
+=======
+          randomRecipe: false
+>>>>>>> 884603d7ab9fbbad56987a57adab2b91f2cd4644
         };
     },
     methods: {
