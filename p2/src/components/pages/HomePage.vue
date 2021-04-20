@@ -10,6 +10,7 @@
           >
           <div id='random-recipe'>
               <show-recipe
+                  v-show="randomRecipe"
                   v-bind:recipe="randomRecipe"
               ></show-recipe>
           </div>
