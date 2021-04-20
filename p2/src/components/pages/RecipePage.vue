@@ -22,14 +22,11 @@ export default {
     props: {
         recipes: {
             type: Array,
-            default: null,
+            
         },
         id: {
             type: String,
         },
-        name: {
-            type: String,
-        }
     },
     data() {
         return {
@@ -47,6 +44,11 @@ export default {
             } catch (e) {
                 return require('@/assets/images/food_icon.jpg');
             }
+        },
+        ingredientsSplit() {
+            let ingredients = this.recipes.map((recipe) =>
+            recipe.ingredients.split('|'));
+            return ingredients;
         }
     },
 } 

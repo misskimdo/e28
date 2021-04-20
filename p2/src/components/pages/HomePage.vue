@@ -10,6 +10,7 @@
           >
           <div id='random-recipe'>
               <show-recipe
+                  v-show="visible"
                   v-bind:recipe="randomRecipe"
               ></show-recipe>
           </div>
@@ -50,13 +51,15 @@ export default {
     },
     data() {
         return {
-          randomRecipe: 0
+          randomRecipe: [],
+          visible: false
         };
     },
     methods: {
         choose() {
           const randomRecipe = Math.floor(Math.random() * this.recipes.length);
           this.randomRecipe = this.recipes[randomRecipe];
+          return this.visible = true;
         }
     }
 }
