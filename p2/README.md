@@ -1,9 +1,7 @@
-_Any instructions/notes in italics should be removed from the template before submitting_
-
 # Project 2
 
-- By: _your first and last name_
-- Production URL: <http://e28p2.yourdomain.com>
+- By: Kim Do
+- Production URL: <http://e28p2.kimdo.me/>
 
 ## Pages summary
 
