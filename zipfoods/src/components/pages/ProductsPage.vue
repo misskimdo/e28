@@ -23,14 +23,14 @@ export default {
     components: {
         "show-product": ShowProduct,
     },
-    props: {
-        products: {
-            type: Array,
-            default: null,
-        },
-    },
+    props: {},
     data() {
         return {};
+    },
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
     },
 };
 </script>
@@ -57,6 +57,6 @@ a.product-link:hover {
     min-width: 300px;
 }
 a.product-link:hover {
-    border: 2px solid lightblue;
+    border: 1px solid var(--black);
 }
 </style>
