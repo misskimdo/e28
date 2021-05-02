@@ -1,6 +1,6 @@
 <template>
 
-  <div id='show-recipe'>
+  <div v-if="recipe" id='show-recipe'>
         <img id='recipe-img' v-bind:src='imgSrc'/>
         <div id='recipe-details'>
             <button v-on:click='addToFavorites' v-if="!addedFave">Add to Faves</button> <i class="fas fa-star" v-if="addedFave"></i>
@@ -44,11 +44,6 @@ export default {
         recipes() {
             return this.$store.state.recipes;
         },
-        // ingredientsSplit() {
-        //     let ingredients = this.recipes.map((recipe) =>
-        //     recipe.ingredients.split('|'));
-        //     return ingredients;
-        // }
     },
     methods: {
         addToFavorites(){

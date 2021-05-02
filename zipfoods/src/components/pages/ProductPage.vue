@@ -13,7 +13,7 @@
                 v-bind:detailed="true"
             ></show-product>
 
-            <button v-on:click="addToCart">Add to cart</button>
+            <button data-test="add-to-cart-button" v-on:click="addToCart">Add to cart</button>
 
             <transition name="fade">
                 <div class="alert" v-if="addConfirmation">

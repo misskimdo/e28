@@ -1,10 +1,10 @@
 <template>
-  <div class="show-product">
-    <div class="name">{{ product.name }}</div>
+  <div class="show-product"> 
+    <div class="name" data-test="name">{{ product.name }}</div>
     <img class="thumb" v-bind:src="imgSrc" />
 
     <div v-if="detailed">
-      <div class="price">${{ product.price }}</div>
+      <div class="price" data-test="price">${{ product.price }}</div>
       <p class="description">{{ product.description }}</p>
     </div>
   </div>

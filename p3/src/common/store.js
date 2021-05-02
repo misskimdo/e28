@@ -10,19 +10,30 @@ export const store = createStore({
     state() {
         return {
             recipes: [],
+            user: null
         }
     },
     mutations: {
         setRecipes(state, payload) {
             state.recipes = payload;
-        }
+        },
+        setUser(state, payload) {
+            state.user = payload;
+        },
     },
     actions: {
         getRecipes(context) {
             axios.get("recipe").then((response) => {
                 context.commit('setRecipes', response.data.recipe);
             });
-        }
+        },
+        authUser(context) {
+            axios.post('auth').then((response) => {
+                if (response.data.authenticated) {
+                    context.commit('setUser', response.data.user);
+                }
+            });
+        },
     },
     getters: {
         getRecipeById(state) {

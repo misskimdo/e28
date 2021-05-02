@@ -27,6 +27,11 @@
             <label for="directions">Directions </label>
             <textarea v-model="recipe.directions" id="direction"></textarea>
             </div>
+
+            <div> 
+            <label for="directions">Categories </label>
+            <textarea v-model="recipe.categories" id="categories"></textarea>
+            </div>
         </div>
 
         <button v-on:click="addRecipe">Add Recipe</button>
@@ -59,7 +64,7 @@ export default {
                     this.errors = response.data.errors;
                     this.showConfirmation = false;
                 } else {
-                    this.$emit("update-products");
+                    this.$emit("update-recipes");
                     this.showConfirmation = true;
                 }
             });

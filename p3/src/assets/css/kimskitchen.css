@@ -74,7 +74,8 @@ nav ul li {
 }
 
 @media only screen and (max-width: 600px) {
-    nav ul li {
+    #nav ul li {
+        font-size: 10pt;
         margin-top: 20px;
         float: none;
     }
@@ -88,8 +89,8 @@ nav ul li {
 nav ul li a:link,
 a:visited,
 a:active {
-    padding: 5px;
-    margin: 5px;
+    padding: 2px 7px;
+    margin: 2px;
     cursor: pointer;
     text-decoration: none;
     color: #004394;

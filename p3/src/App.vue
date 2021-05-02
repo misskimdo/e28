@@ -28,12 +28,13 @@ export default {
   name: "App",
   data() {
     return {
-        links: ['home', 'all recipes', 'add a recipe', 'favorites'],
+        links: ['home', 'all recipes', 'add a recipe', 'account', 'favorites'],
 
         paths: {
             home: '/',
             'all recipes': '/recipes',
             'add a recipe': '/recipe/new',
+            account: '/account',
             favorites: '/favorites',
         },
         };
@@ -45,6 +46,7 @@ export default {
   },
   mounted() {
     this.loadRecipes();
+    this.$store.dispatch('authUser');
   },
   methods: {
     loadRecipes() {

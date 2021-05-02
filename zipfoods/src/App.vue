@@ -14,7 +14,7 @@
                         v-bind:key="link"
                         v-bind:to="paths[link]"
                     >
-                        <span v-if="link == 'cart'">({{ cartCount }})</span>
+                        <span data-test="cart-count" v-if="link == 'cart'">({{ cartCount }})</span>
                         {{ link }}</router-link
                     >
                 </li>
@@ -32,13 +32,14 @@ export default {
     data() {
         return {
             /* Store links in an array to maintain order */
-            links: ["home", "products", "add a product", "categories", "cart"],
+            links: ["home", "products", "add a product", "categories", "account", "cart"],
             /* Map links to  the appropriate component */
             paths: {
                 home: "/",
                 products: "/products",
                 "add a product": "/product/new",
                 categories: "/categories",
+                account: "/account",
                 cart: "/cart",
             },
         };
@@ -54,6 +55,7 @@ export default {
     mounted() {
         this.loadProducts();
         this.$store.commit("setCartCount", cart.count());
+        this.$store.dispatch('authUser');
     },
     methods: {
         loadProducts() {
