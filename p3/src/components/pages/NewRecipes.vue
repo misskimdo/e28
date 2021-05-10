@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import ShowRecipe from '@/components/ShowRecipe.vue';
+import ShowRecipe from "@/components/ShowRecipe.vue";
 
 export default {
     components: {

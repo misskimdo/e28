@@ -1,59 +1,75 @@
 <template>
     <div id="account-page">
         <div v-if="user">
-            <h2>Hi, {{ user.name }}!</h2>
+            <h2 data-test="welcome-message">Hi, {{ user.name }}!</h2>
 
             <div id="favorites">
-                <strong>Your Favorites</strong>
+                <h3><b>Your Favorites</b></h3>
                 <p v-if="favorites && favorites.length == 0">
-                    No favorites yet.
+                    You don't have any favorites. <router-link to="/recipes">Add some.</router-link>
                 </p>
-                <li v-for="(favorite, key) in favorites" v-bind:key="key">
-                    {{ favorite.name }}
-                </li>
+                <ul>
+                    <li v-for="(favorite, key) in favorites" v-bind:key="key">
+                        {{ favorite.name }}
+                    </li> 
+                </ul>
             </div>
 
-            <button v-on:click="logout">Logout</button>
+            <button v-on:click="logout" data-test="logout-button">Logout</button>
         </div>
 
-        <div v-else id="loginForm">
+        <div v-else>
+            <div id="loginForm">
             <h2>Login</h2>
-            
             <div>
                 <label>
                     Email:
-                    <input type="text" v-model="data.email" />
+                    <input type="text" v-model="data.email" data-test="test-email"/>
                 </label>
             </div>
             <div>
                 <label>
                     Password:
-                    <input type="password" v-model="data.password" />
+                    <input type="password" v-model="data.password" data-test="password-input"/>
                 </label>
             </div>
 
-            <button v-on:click="login">Login</button>
+            <button v-on:click="login" data-test="login-button">Login</button>
+
+            <router-link to="/register" class="register_btn" data-test="register-button">Register</router-link>
 
             <ul v-if="errors">
                 <li class="error" v-for="(error, index) in errors" :key="index">
                     {{ error }}
                 </li>
             </ul>
+            </div>
         </div>
+
     </div>
 </template>
 
 <script>
 import { axios } from "@/common/app.js";
+import favorite from '@/components/features/favorite.js'; 
+
 
 export default {
+    components: {
+        
+    },
+    setup(props) {
+        const { addedFave, addToFavorites, removeFromFavorites } = favorite(
+            props.id
+        );
+        return { addedFave, addToFavorites, removeFromFavorites };
+    },
     data() {
         return {
-            // Form is prefilled for demonstration purposes; remove in final application
-            // jill@harvard.edu/asdfasdf is one of our seed users from e28api/seeds/user.json
             data: {
-                email: "jill@harvard.edu",
-                password: "asdfasdf",
+                name: "",
+                email: "",
+                password: "",
             },
             errors: null,
             favorites: [],
@@ -63,8 +79,8 @@ export default {
         user() {
             return this.$store.state.user;
         },
-        products() {
-            return this.$store.state.products;
+        recipes() {
+            return this.$store.state.recipes;
         },
     },
     methods: {
@@ -75,8 +91,8 @@ export default {
                     .then((response) => {
                         this.favorites = response.data.favorite.map(
                             (favorite) => {
-                                return this.$store.getters.getProductById(
-                                    favorite.product_id
+                                return this.$store.getters.getRecipeById(
+                                    favorite.recipe_id
                                 );
                             }
                         );
@@ -95,7 +111,16 @@ export default {
         logout() {
             axios.post("logout").then((response) => {
                 if (response.data.success) {
-                    this.$store.commit("setUser", null);
+                    this.$store.commit("setUser", false);
+                }
+            });
+        },
+        register() {
+            axios.post("register", this.data).then((response) => {
+                if (response.data.authenticated) {
+                    this.$store.commit("setUser", response.data.user);
+                } else {
+                    this.errors = response.data.errors;
                 }
             });
         },
@@ -120,6 +145,7 @@ export default {
 #loginForm {
     width: 50%;
     margin: auto;
+    padding: 30px;
 }
 
 #inputs {
@@ -128,6 +154,8 @@ export default {
 
 ul {
     list-style-type: none;
+    margin-left: 0; 
+    padding-left: 0;
 }
 
 #confirm {
@@ -137,6 +165,10 @@ ul {
     font-weight: 100;
     text-transform: uppercase;
     padding: 10px;
+}
+
+.register_btn {
+    padding-left: 20px;
 }
 
 .error {
@@ -158,7 +190,7 @@ ul {
     #loginForm {
     width: 90%;
     margin: auto;
-}
+    }
 }
 
 </style>

@@ -1,23 +1,33 @@
 <template>
+    <div v-if="recipe" id="show-recipe">
+        <img id="recipe-img" v-bind:src="imgSrc"/>
+        <div id="recipe-details">
+            <div v-if="user">
+                <button v-on:click="addToFavorites()" 
+                    v-if="!addedFave" 
+                    data-test="favorite-button">
+                    Add to Faves</button>
+                <i class="fas fa-star" 
+                    v-if="addedFave" 
+                    v-on:click="removeFromFavorites()">
+                </i>
+            </div>
 
-  <div v-if="recipe" id='show-recipe'>
-        <img id='recipe-img' v-bind:src='imgSrc'/>
-        <div id='recipe-details'>
-            <button v-on:click='addToFavorites' v-if="!addedFave">Add to Faves</button> <i class="fas fa-star" v-if="addedFave"></i>
-            <h1>{{ recipe.name}}</h1>
-            <p class='description'>{{ recipe.description }}</p>
+               
+            <h1 data-test="recipe-name">{{ recipe.name}}</h1>
+                <p class="description">{{ recipe.description }}</p>
             <h3>Ingredients</h3>
-            <ul>{{ recipe.ingredients.split('|').join(' •  ') }} </ul>
+                <ul>{{ recipe.ingredients.split("|").join(" •  ") }} </ul>
             <h3>Directions</h3>
-            <ul>{{ recipe.directions.split('|').join(' ') }}</ul>
+                <ul>{{ recipe.directions.split("|").join(" ") }}</ul>
             <h3>Categories</h3>
-            <ul>{{ recipe.categories.split('|').join(', ') }}</ul>
+                <ul>{{ recipe.categories.split('|').join(', ') }}</ul>
         </div>
     </div>
 </template>
 
 <script>
-import { favorites } from '@/common/app.js';
+import favorite from '@/components/features/favorite.js'; 
 
 export default {
     props: {
@@ -25,12 +35,20 @@ export default {
             type: String,
         },
     },
+    setup(props) {
+        const { addedFave, addToFavorites, removeFromFavorites } = favorite(
+            props.id
+        );
+        return { addedFave, addToFavorites, removeFromFavorites };
+    },
     data() {
         return {
-            addedFave: false,
         };
     },
     computed: {
+        user() {
+            return this.$store.state.user;
+        },
         recipe() {
             return this.$store.getters.getRecipeById(this.id)
         },
@@ -46,13 +64,6 @@ export default {
         },
     },
     methods: {
-        addToFavorites(){
-            console.log(this.recipe.id);
-
-            favorites.add(this.recipe.id);
-
-            this.addedFave = true;
-        }
     }
 } 
 </script>
@@ -94,6 +105,11 @@ i {
 
 p, h2, h3 {
     text-align: left;
+}
+
+i:hover {
+    color: #d8e3e4;
+    border: none;
 }
 
 .description {

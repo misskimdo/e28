@@ -2,24 +2,24 @@
     <div id="recipes-page">
         <h1>Recipes</h1>
         <div id="recipes">
-        <router-link
+            <router-link
                 v-for="recipe in recipes"
                 v-bind:key="recipe.id"
                 v-bind:to="'/recipe/' + recipe.id"
-                >
+            >
                 <div id="recipe">
-            <show-recipe
-                v-bind:recipe="recipe"
-            ></show-recipe>
+                    <show-recipe
+                        v-bind:recipe="recipe"
+                    ></show-recipe>
                 </div>
-        </router-link>
-            
-    </div>
+            </router-link>
+        </div>
     </div>
 </template>
 
 <script>
 import ShowRecipe from '@/components/ShowRecipe.vue';
+import favorite from '@/components/features/favorite.js'; 
 
 export default {
     components: {
@@ -27,10 +27,19 @@ export default {
     },
     props: {
     },
+    setup(props) {
+        const { addedFave, addToFavorites, removeFromFavorites } = favorite(
+            props.id
+        );
+        return { addedFave, addToFavorites, removeFromFavorites };
+},
     data (){
         return {}
     },
     computed: {
+        user() {
+            return this.$store.state.user;
+        },
         recipes() {
             return this.$store.state.recipes;
         }

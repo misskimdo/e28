@@ -9,6 +9,11 @@
             "name": "Jamal Harvard",
             "email": "jamal@harvard.edu",
             "password": "asdfasdf"
+        },
+        {
+            "name": "Tristan Williams",
+            "email": "tristan@cat.com",
+            "password": "c@ts"
         }
     ]
 }

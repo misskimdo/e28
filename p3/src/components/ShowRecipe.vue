@@ -1,14 +1,10 @@
 <template>
-<div>
-  <div class="show-recipe">
-        <div class="name">{{ recipe.name }}</div>
-
-        <img
-            class="thumb"
-            v-bind:src="imgSrc"
-        />
-    </div>
-    <p class="description">{{ recipe.description }}</p>
+    <div>
+        <div class="show-recipe">
+            <div class="name" data-test="recipe-name">{{ recipe.name }}</div>
+            <img class="thumb" v-bind:src="imgSrc"/>
+        </div>
+        <p class="description" data-test="recipe-description">{{ recipe.description }}</p>
     </div>
 </template>
 
@@ -42,10 +38,8 @@ export default {
 
 .show-recipe:hover .name  {
     opacity: 1;
-    
     text-align: center;
 }
-
 
 .name {
     position: absolute; 

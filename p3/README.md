@@ -1,45 +1,17 @@
-_Any instructions/notes in italics should be removed from the template before submitting_
-
-# Project 2
-
-- By: _your first and last name_
-- Production URL: <http://e28p2.yourdomain.com>
-
-## Pages summary
-
-- Home
-- All Recipes
-- Add a Recipe
-
-## SFC summary
-
-- ShowRecipe.vue
-- AddRecipe.vue
-- HomePage.vue
-- NewRecipes.vue
-- RecipePage.vue
-- RecipesPage.vue
-
-## Server interaction
-
-- Add recipes
-- Newest recipes show up first on "Latest Recipes" section on homepage and at the end of "All Recipes"
+# Project 3
++ By: Kim Do
++ Production URL: <http://e28p3.kimdo.me/>
 
 ## Outside resources
+- [vue Uncaught (in promise) TypeError: Cannot read property 'name' of undefined](https://forum.vuejs.org/t/i-am-getting-an-error-in-render-function-typeerror-cannot-read-property-of-undefined-using-vuex-and-vue-router/13990)
 
-### Code
+## How is authentication being used in your application?
+User must login to make recipes a favorite. The "add to favorite" button only shows up on individual recipe pages if user is logged in. Once user clicks the button, a star shows up in place of the button to show it is a favorite. User can also click the star to un-favorite it.
 
-[vue router link to one item](https://stackoverflow.com/questions/47239742/vue-js-passing-array-from-one-page-to-another)
+## What data entities of your application are being managed via Vuex?
+- retrieving recipe
+- authorizing, registering users
 
-[vue show last x items](https://stackoverflow.com/questions/46622209/how-to-limit-iteration-of-elements-in-v-for)
+## E2E Testing screenshot
 
-### Graphics
-
-[food icons](https://www.freepik.com/free-vector/fast-food-menu-set-icons-background-french-fries-hamburger-sweet-potato-fries_3330411.htm)
-[delete icon](https://fontawesome.com/icons/minus-circle?style=solid)
-[star icon](https://fontawesome.com/icons/star?style=solid)
-
-### Fonts
-
-[Nunito Font](https://fonts.adobe.com/fonts/nunito)
-
+![Kim's Kitchen passing E2E tests](https://raw.githubusercontent.com/susanBuck/e28/main/zipfoods/e2e-tests.png)

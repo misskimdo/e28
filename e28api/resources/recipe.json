@@ -17,15 +17,21 @@
         },
         "ingredients": {
             "type": "text",
-            "validators": []
+            "validators": [
+                "required"
+            ]
         },
         "directions": {
             "type": "text",
-            "validators": []
+            "validators": [
+                "required"
+            ]
         },
         "categories": {
             "type": "string",
-            "validators": []
+            "validators": [
+                "required"
+            ]
         }
     }
 }
