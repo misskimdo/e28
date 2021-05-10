@@ -14,4 +14,4 @@ User must login to make recipes a favorite. The "add to favorite" button only sh
 
 ## E2E Testing screenshot
 
-![Kim's Kitchen passing E2E tests](https://raw.githubusercontent.com/susanBuck/e28/main/zipfoods/e2e-tests.png)
+![Kim's Kitchen passing E2E tests](https://raw.githubusercontent.com/misskimdo/e28/main/p3/KimDo_p3_e2e_testing.png)
